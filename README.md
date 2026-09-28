@@ -5,19 +5,6 @@ NIM : 2509116051
 
 Kelas : Sistem Informasi B
 
-
-## Daftar Isi
-
-1. [Deskripsi Proyek](#1-deskripsi-proyek)
-2. [Alur Program](#2-alur-program)
-3. [Hierarki Class](#3-hierarki-class)
-4. [Penerapan Inheritance](#4-penerapan-inheritance)
-5. [Penerapan Polymorphism](#5-penerapan-polymorphism)
-6. [Penerapan Condition (If-Else)](#6-penerapan-condition-if-else)
-7. [Penerapan Looping](#7-penerapan-looping)
-8. [Dokumentasi Program](#8-dokumentasi-program)
-9. [Validasi Input](#9-validasi-input)
-
 ---
 
 ## 1. Deskripsi Proyek
@@ -93,21 +80,21 @@ src
       └── LayananValidator.java     → Kumpulan validasi input
 ```
 
-Penjelasan alurnya:
+Berikut merupakan penjelasan alur program:
 
-1. **Program dimulai** dan menampilkan menu utama, menu ini ditampilkan berulang sampai pengguna memilih Keluar.
+1. Program dimulai dan menampilkan menu utama, menu ini ditampilkan berulang sampai pengguna memilih Keluar.
 
    <img height="200" alt="image" src="https://github.com/user-attachments/assets/efb34da6-9e06-4416-91bb-f7cf53c6c226" />
 
-2. **Menu 1 (Tambah Pesanan):** pengguna mengisi nama, nomor HP, dan tanggal pengerjaan. Nomor HP dan tanggal langsung divalidasi, sehingga pengguna diminta mengulang jika formatnya salah. Pengguna memilih kategori make up. Berdasarkan pilihan itu, program meminta data khusus jumlah orang dan Retouch Kit untuk make up wisuda, atau jumlah sesi dan Sanggul/Hairdo untuk make up pengantin. Program lalu membuat objek `MakeUpWisuda` atau `MakeUpPengantin` sesuai kategori, lalu menyimpannya ke `ArrayList`.
+2. Menu 1 (Tambah Pesanan), pengguna mengisi nama, nomor HP, dan tanggal pengerjaan. Nomor HP dan tanggal langsung divalidasi, sehingga pengguna diminta mengulang jika formatnya salah. Pengguna memilih kategori make up. Berdasarkan pilihan itu, program meminta data khusus jumlah orang dan Retouch Kit untuk make up wisuda, atau jumlah sesi dan Sanggul/Hairdo untuk make up pengantin. Program lalu membuat objek `MakeUpWisuda` atau `MakeUpPengantin` sesuai kategori, lalu menyimpannya ke `ArrayList`.
 
    <img height="500" alt="image" src="https://github.com/user-attachments/assets/87326b83-91a5-4ac4-b645-57602c2ac07d" />
 
-6. **Menu 2 (Lihat Semua Pesanan):** jika belum ada pesanan, program menampilkan pemberitahuan. Jika sudah ada, program menelusuri seluruh pesanan dengan *loop* dan menampilkan detail serta total biayanya.
+6. Menu 2 (Lihat Semua Pesanan), jika belum ada pesanan, program menampilkan pemberitahuan. Jika sudah ada, program menelusuri seluruh pesanan dengan *loop* dan menampilkan detail serta total biayanya.
 
    <img height="500" alt="image" src="https://github.com/user-attachments/assets/23b644c1-d6c0-43c1-960d-a80822efafb7" />
 
-8. **Menu 3 (Keluar):** program berhenti.
+8. Menu 3 (Keluar), program berhenti.
 
    <img width="446" height="251" alt="image" src="https://github.com/user-attachments/assets/a8f22706-adbb-4051-88e8-abfa92045687" />
 
@@ -129,6 +116,7 @@ Tujuan penerapan inheritance pada program ini:
 - **Pemanggilan constructor induk melalui `super(...)`.** Setiap subclass memanggil constructor `LayananMakeUp` untuk mengisi data umum, sebelum melanjutkan pengisian atribut khususnya masing-masing.
 
 <img height="200" alt="image" src="https://github.com/user-attachments/assets/437424ab-7e35-4ef1-86bb-4c515cafb3fc" />
+
 <img height="200" alt="image" src="https://github.com/user-attachments/assets/420b6498-9106-4f03-bdd0-aa2f7ce14266" />
 
 ---
@@ -158,9 +146,9 @@ Setiap subclass memanggil versi superclass dulu lewat `super.tampilkanDetailPesa
 
 ## 6. Penerapan Condition (If-Else)
 
-Percabangan digunakan untuk menentukan langkah program berdasarkan pilihan atau kondisi data.
+Percabangan digunakan untuk menentukan langkah program berdasarkan pilihan atau kondisi data. Berikut merupakan penerapan condition.
 
-**1. Menentukan kategori make up** (`if - else if - else`). Cabang `else` menangani kategori di luar pilihan yang tersedia:
+**1. Menentukan kategori make up** 
 
 <img width="1102" height="426" alt="image" src="https://github.com/user-attachments/assets/594f23e7-29de-417f-a51b-84ee177fc83c" />
 
@@ -170,106 +158,45 @@ Percabangan digunakan untuk menentukan langkah program berdasarkan pilihan atau 
 <img width="828" height="308" alt="image" src="https://github.com/user-attachments/assets/c73ee094-41d6-4a94-8e3d-7f17cdaffcb9" />
 
 
-**3. Menghitung biaya tambahan** di dalam `hitungTotalBiaya()`. Biaya Retouch Kit atau Sanggul hanya ditambahkan jika opsinya dipilih:
-
-```java
-if (adaRetouchKit) {
-    total += 50000;
-}
-```
-
-**4. Menyimpan pesanan hanya jika berhasil dibuat.** Objek yang gagal dibuat (kategori tidak valid) tidak dimasukkan ke daftar:
-
-```java
-if (pesanan != null) {
-    daftarPesanan.add(pesanan);
-    System.out.println("\nPesanan berhasil ditambahkan!");
-}
-```
-
-**5. Menampilkan daftar pesanan.** Jika daftar masih kosong, program menampilkan pemberitahuan, bukan tabel kosong:
-
-```java
-if (daftarPesanan.isEmpty()) {
-    System.out.println("Belum ada pesanan masuk.");
-} else {
-    // tampilkan seluruh pesanan
-}
-```
-
-**6. Validasi jawaban Ya/Tidak** di `LayananValidator`:
-
-```java
-if (jawaban.equals("ya") || jawaban.equals("y") || jawaban.equals("yes")) {
-    return true;
-} else if (jawaban.equals("tidak") || jawaban.equals("t") || jawaban.equals("no") || jawaban.equals("n")) {
-    return false;
-} else {
-    System.out.print("Pilihan tidak valid! Masukkan Ya/Tidak: ");
-}
-```
-
-Selain `if-else`, program juga memakai `switch` untuk menentukan aksi dari menu utama (1 = Tambah, 2 = Lihat, 3 = Keluar, lainnya = pilihan tidak valid) dan operator ternary (`? :`) untuk menampilkan teks "Ya" atau "Tidak" pada detail pesanan.
-
----
-
 ## 7. Penerapan Looping
 
 Perulangan digunakan agar program dapat berjalan terus-menerus dan memproses data yang jumlahnya tidak tetap. Ada tiga jenis perulangan yang dipakai.
 
-**1. `do-while`: menu utama yang berulang.** Menu ditampilkan minimal satu kali dan terus berulang sampai pengguna memilih Keluar (3):
+**1. `do-while`: menu utama yang berulang.** 
 
-```java
-do {
-    // tampilkan menu, baca pilihan, jalankan aksi lewat switch
-    pilihanMenu = LayananValidator.inputAngka(input, "Pilih Menu (1-3): ");
-    ...
-} while (pilihanMenu != 3);
-```
+Menu ditampilkan minimal satu kali dan terus berulang sampai pengguna memilih Keluar (3):
 
-**2. `for`: menampilkan seluruh pesanan.** Perulangan menelusuri `ArrayList` dari pesanan pertama sampai terakhir, sehingga jumlah pesanan yang tampil menyesuaikan data yang ada:
+<img width="765" height="197" alt="image" src="https://github.com/user-attachments/assets/beb824ff-f7d8-463f-9c8b-7a3ad3a5a00a" />
 
-```java
-for (int i = 0; i < daftarPesanan.size(); i++) {
-    System.out.println("\nData Pesanan Ke-" + (i + 1));
-    System.out.println("---------------------------------------------");
-    daftarPesanan.get(i).tampilkanDetailPesanan();
-}
-```
 
-**3. `while (true)`: mengulang permintaan input sampai valid.** Pada `LayananValidator`, program terus meminta input ulang sampai pengguna memasukkan data yang benar. Perulangan baru berhenti saat `return` dijalankan:
+**2. `for`: menampilkan seluruh pesanan.** 
 
-```java
-public static int inputAngka(Scanner input, String prompt) {
-    System.out.print(prompt);
-    while (true) {
-        String teks = input.nextLine().trim();
-        try {
-            return Integer.parseInt(teks);
-        } catch (NumberFormatException e) {
-            System.out.print("Input harus berupa angka! Coba lagi: ");
-        }
-    }
-}
-```
+Perulangan menelusuri `ArrayList` dari pesanan pertama sampai terakhir, sehingga jumlah pesanan yang tampil menyesuaikan data yang ada:
 
-Pola yang sama dipakai pada `inputTanggal`, `inputNomorHp`, dan `inputYesNo`.
+<img width="812" height="272" alt="image" src="https://github.com/user-attachments/assets/85efc867-c346-4dfc-803f-6fac6accfcc6" />
+
+
+**3. `while (true)`: mengulang permintaan input sampai valid.** 
+
+Pada `LayananValidator`, program terus meminta input ulang sampai pengguna memasukkan data yang benar. Perulangan baru berhenti saat `return` dijalankan:
+
+<img width="675" height="231" alt="image" src="https://github.com/user-attachments/assets/c0d1bbe1-72d3-45f6-a3e5-8cfba375b4c0" />
 
 ---
 
 ## 8. Dokumentasi Program
 
 ### 1. Menu Utama
-<img width="439" height="158" alt="image" src="https://github.com/user-attachments/assets/4c24f455-d892-45f6-96bf-678f1d85e0e2" />
+<img height="150" alt="image" src="https://github.com/user-attachments/assets/4c24f455-d892-45f6-96bf-678f1d85e0e2" />
 
 ### 2. Pilihan 1, Menambahkan Data Pemesanan Klien atau Pelanggan Baru
-<img width="496" height="593" alt="image" src="https://github.com/user-attachments/assets/0e49f793-0e9a-4ec5-acee-07fe9aee57c4" />
+<img height="500" alt="image" src="https://github.com/user-attachments/assets/0e49f793-0e9a-4ec5-acee-07fe9aee57c4" />
 
 ### 3. Pilihan 2, Melihat Semua Daftar Pemesanan
-<img width="429" height="436" alt="image" src="https://github.com/user-attachments/assets/03af910a-65a4-4411-a442-2aaf67c3f6ae" />
+<img height="400" alt="image" src="https://github.com/user-attachments/assets/03af910a-65a4-4411-a442-2aaf67c3f6ae" />
 
 ### 4. Pilihan 3, Keluar dari Program
-<img width="669" height="263" alt="image" src="https://github.com/user-attachments/assets/f69eeea1-b809-457f-957e-0f7966693bec" />
+<img height="200" alt="image" src="https://github.com/user-attachments/assets/f69eeea1-b809-457f-957e-0f7966693bec" />
 
 ---
 
@@ -285,14 +212,14 @@ Aturan validasi yang diterapkan:
 | Retouch Kit dan Sanggul/Hairdo | Hanya menerima Ya/Tidak |
 
 ### 1. Menu Utama
-<img width="445" height="347" alt="image" src="https://github.com/user-attachments/assets/764efb94-f7e0-49d3-949d-21e8455e5e3c" />
+<img height="300" alt="image" src="https://github.com/user-attachments/assets/764efb94-f7e0-49d3-949d-21e8455e5e3c" />
 
 ### 2. Input Nomor _Handphone_ Klien atau Pelanggan
-<img width="430" height="263" alt="image" src="https://github.com/user-attachments/assets/6c7e487f-5dd7-442b-a59f-7d36ecb73a80" />
+<img height="300" alt="image" src="https://github.com/user-attachments/assets/6c7e487f-5dd7-442b-a59f-7d36ecb73a80" />
 
 ### 3. Input Tanggal Pengerjaan
-<img width="849" height="325" alt="image" src="https://github.com/user-attachments/assets/fdecadcd-9cbe-41c9-8109-550b0f5b3234" />
+<img height="300" alt="image" src="https://github.com/user-attachments/assets/fdecadcd-9cbe-41c9-8109-550b0f5b3234" />
 
 ### 4. Input Kategori Make Up
-<img width="897" height="487" alt="image" src="https://github.com/user-attachments/assets/70955cb4-717d-451b-87f7-01462ccfe68f" />
+<img height="300" alt="image" src="https://github.com/user-attachments/assets/70955cb4-717d-451b-87f7-01462ccfe68f" />
 
